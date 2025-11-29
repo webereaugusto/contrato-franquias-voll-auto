@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contrato de Franquia</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 2.5cm 2cm;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Times New Roman', serif;
+      font-size: 12pt;
+      line-height: 1.6;
+      color: #000;
+      background: #fff;
+    }
+
+    .contract-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 2px solid #000;
+    }
+
+    .contract-title {
+      font-size: 16pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .contract-subtitle {
+      font-size: 14pt;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .contract-body {
+      text-align: justify;
+      margin-bottom: 20px;
+    }
+
+    .clause {
+      margin-bottom: 25px;
+    }
+
+    .clause-number {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .clause-title {
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .clause-content {
+      margin-bottom: 15px;
+      text-indent: 1.5cm;
+    }
+
+    .signature-section {
+      margin-top: 50px;
+      page-break-inside: avoid;
+    }
+
+    .signature-block {
+      margin-top: 60px;
+      text-align: center;
+      width: 45%;
+      display: inline-block;
+      vertical-align: top;
+    }
+
+    .signature-line {
+      border-top: 1px solid #000;
+      margin-top: 50px;
+      padding-top: 5px;
+    }
+
+    .data-field {
+      font-weight: bold;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 15px 0;
+    }
+
+    .table td {
+      padding: 8px;
+      border: 1px solid #000;
+    }
+
+    .table-header {
+      background-color: #f0f0f0;
+      font-weight: bold;
+    }
+
+    .page-break {
+      page-break-before: always;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    .mb-10 {
+      margin-bottom: 10px;
+    }
+
+    .mb-20 {
+      margin-bottom: 20px;
+    }
+
+    .mt-20 {
+      margin-top: 20px;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+    .uppercase {
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="contract-header">
+    <div class="contract-title">Contrato de Franquia</div>
+    <div class="contract-subtitle">VOLL PILATES STUDIOS</div>
+  </div>
+
+  <div class="contract-body">
+    <p class="clause-content">
+      Pelo presente instrumento particular de <span class="bold">CONTRATO DE FRANQUIA</span>, 
+      de um lado, como <span class="bold">FRANQUEADOR</span>, 
+      <span class="data-field">{{FRANQUEADOR_RAZAO_SOCIAL}}</span>, 
+      inscrita no CNPJ sob o nº <span class="data-field">{{FRANQUEADOR_CNPJ}}</span>, 
+      com sede na <span class="data-field">{{FRANQUEADOR_ENDERECO}}</span>, 
+      e, de outro lado, como <span class="bold">FRANQUEADO</span>, 
+      <span class="data-field">{{FRANQUEADO_NOME}}</span>, 
+      <span class="data-field">{{FRANQUEADO_NACIONALIDADE}}</span>, 
+      <span class="data-field">{{FRANQUEADO_ESTADO_CIVIL}}</span>, 
+      <span class="data-field">{{FRANQUEADO_PROFISSAO}}</span>, 
+      portador do CPF nº <span class="data-field">{{FRANQUEADO_CPF}}</span> 
+      e RG nº <span class="data-field">{{FRANQUEADO_RG}}</span>, 
+      residente e domiciliado na <span class="data-field">{{FRANQUEADO_ENDERECO}}</span>, 
+      têm entre si justo e contratado o seguinte:
+    </p>
+
+    <div class="clause">
+      <div class="clause-number">CLÁUSULA 1ª - DO OBJETO</div>
+      <div class="clause-content">
+        O presente contrato tem por objeto a concessão de franquia para exploração do negócio 
+        "VOLL PILATES STUDIOS", mediante o pagamento das taxas e valores estabelecidos neste instrumento.
+      </div>
+    </div>
+
+    <div class="clause">
+      <div class="clause-number">CLÁUSULA 11ª - DO INVESTIMENTO E TAXAS</div>
+      <div class="clause-content">
+        <p class="mb-10">
+          O FRANQUEADO se compromete a realizar os seguintes investimentos:
+        </p>
+        
+        <p class="mb-10 bold">
+          VALOR TOTAL DO KIT (EQUIPAMENTOS E SERVIÇOS): 
+          <span class="data-field">R$ {{VALOR_TOTAL_KIT}}</span>
+        </p>
+
+        <p class="mb-10">
+          <span class="bold">11.1 - Pagamento à Fábrica:</span>
+        </p>
+        <ul style="margin-left: 2cm; margin-bottom: 15px;">
+          <li>Valor Total: <span class="data-field">R$ {{VALOR_TOTAL_FABRICA}}</span></li>
+          <li>Valor Entrada (Pix): <span class="data-field">R$ {{VALOR_ENTRADA_FABRICA}}</span></li>
+          <li>Data Limite Entrada: <span class="data-field">{{DATA_LIMITE_ENTRADA_FABRICA}}</span></li>
+          <li>Quantidade de Parcelas: <span class="data-field">{{QTD_PARCELAS_FABRICA}}</span></li>
+          <li>Valor da Parcela (Boleto): <span class="data-field">R$ {{VALOR_PARCELA_FABRICA}}</span></li>
+        </ul>
+
+        <p class="mb-10">
+          <span class="bold">11.2 - Pagamento à Franqueadora:</span>
+        </p>
+        <ul style="margin-left: 2cm; margin-bottom: 15px;">
+          <li>Valor Total: <span class="data-field">R$ {{VALOR_TOTAL_FRANQUEADORA}}</span></li>
+          <li>Valor Entrada (Pix): <span class="data-field">R$ {{VALOR_ENTRADA_FRANQUEADORA}}</span></li>
+          <li>Data Limite Entrada: <span class="data-field">{{DATA_LIMITE_ENTRADA_FRANQUEADORA}}</span></li>
+          <li>Quantidade de Parcelas: <span class="data-field">{{QTD_PARCELAS_FRANQUEADORA}}</span></li>
+          <li>Valor da Parcela (Boleto): <span class="data-field">R$ {{VALOR_PARCELA_FRANQUEADORA}}</span></li>
+        </ul>
+
+        <p class="mb-10">
+          <span class="bold">11.2.2 - Taxa de Franquia:</span>
+          <span class="data-field">R$ {{TAXA_FRANQUIA}}</span> (Isenta conforme condições especiais)
+        </p>
+      </div>
+    </div>
+
+    <div class="clause">
+      <div class="clause-number">CLÁUSULA 11.8 - DOS ROYALTIES</div>
+      <div class="clause-content">
+        <p class="mb-10">
+          O FRANQUEADO se compromete a pagar mensalmente ao FRANQUEADOR o valor de royalties 
+          no montante de <span class="data-field">R$ {{ROYALTY_VALOR}}</span> 
+          (<span class="data-field">{{ROYALTY_VALOR_EXTENSO}}</span> reais) ao mês.
+        </p>
+        <p class="mb-10">
+          {{ROYALTY_DESCRICAO}}
+        </p>
+      </div>
+    </div>
+
+    <div class="signature-section">
+      <p class="text-center mb-20">
+        <span class="data-field">{{CIDADE_ASSINATURA}}</span>, 
+        <span class="data-field">{{DATA_ASSINATURA}}</span>
+      </p>
+
+      <div class="signature-block">
+        <p class="bold mb-10">FRANQUEADOR</p>
+        <p class="mb-10">{{FRANQUEADOR_RAZAO_SOCIAL}}</p>
+        <p class="mb-10">CNPJ: {{FRANQUEADOR_CNPJ}}</p>
+        <div class="signature-line">
+          <p>Assinatura</p>
+        </div>
+      </div>
+
+      <div class="signature-block" style="margin-left: 8%;">
+        <p class="bold mb-10">FRANQUEADO</p>
+        <p class="mb-10">{{FRANQUEADO_NOME}}</p>
+        <p class="mb-10">CPF: {{FRANQUEADO_CPF}}</p>
+        <div class="signature-line">
+          <p>Assinatura</p>
+        </div>
+      </div>
+
+      {{#TESTEMUNHAS}}
+      <div class="signature-block" style="margin-top: 30px;">
+        <p class="bold mb-10">TESTEMUNHA {{NUMERO}}</p>
+        <p class="mb-10">CPF: {{CPF}}</p>
+        <p class="mb-10">RG: {{RG}}</p>
+        <div class="signature-line">
+          <p>Assinatura</p>
+        </div>
+      </div>
+      {{/TESTEMUNHAS}}
+    </div>
+  </div>
+</body>
+</html>
+
