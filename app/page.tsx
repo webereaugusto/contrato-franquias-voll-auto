@@ -204,6 +204,54 @@ export default function Home() {
     })
   }
 
+  const handleNewContract = () => {
+    if (confirm('Tem certeza que deseja limpar todos os dados e iniciar um novo contrato?')) {
+      methods.reset({
+        personalData: {
+          nomeCompleto: '',
+          nacionalidade: 'brasileira',
+          nacionalidadeOutra: '',
+          estadoCivil: '',
+          profissao: '',
+          cpf: '',
+          rg: '',
+          cep: '',
+          cidade: '',
+          uf: '',
+          rua: '',
+          numero: '',
+          complemento: '',
+          bairro: '',
+        },
+        investment: {
+          valorTotalKit: 0,
+          valorTotalFabrica: 0,
+          valorEntradaFabrica: 0,
+          dataLimiteEntradaFabrica: '',
+          qtdParcelasFabrica: 1,
+          valorParcelaFabrica: 0,
+          valorTotalFranqueadora: 0,
+          valorEntradaFranqueadora: 0,
+          dataLimiteEntradaFranqueadora: '',
+          qtdParcelasFranqueadora: 1,
+          valorParcelaFranqueadora: 0,
+          taxaFranquia: 15000,
+        },
+        royalties: [
+          { id: '1', valor: 990, descricao: 'Com recebimento de Cursos VOLL', selecionado: true },
+          { id: '2', valor: 1490, descricao: 'Sem recebimento de Cursos VOLL', selecionado: false },
+          { id: '3', valor: 0, descricao: 'Isenção de Royalties (conforme cláusula 11.8)', selecionado: false },
+        ],
+        signatures: {
+          cidadeAssinatura: '',
+          dataAssinatura: '',
+          testemunhas: [],
+        },
+      })
+      setCurrentStep(1)
+    }
+  }
+
   const handleGeneratePDF = async () => {
     const isValid = await methods.trigger()
     if (!isValid) {
@@ -269,6 +317,15 @@ export default function Home() {
           </div>
           
           <div className="flex items-center gap-3">
+            <button
+              onClick={handleNewContract}
+              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-[#ff9500] hover:text-[#ffb340] transition-colors"
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+              </svg>
+              Novo Contrato
+            </button>
             <button
               onClick={handleFillTest}
               className="px-4 py-2 text-sm font-medium text-[#a1a1a6] hover:text-white transition-colors"

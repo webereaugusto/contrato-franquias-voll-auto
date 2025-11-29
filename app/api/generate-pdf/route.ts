@@ -21,11 +21,21 @@ export async function POST(request: NextRequest) {
     // Gerar PDF com Puppeteer
     const browser = await puppeteer.launch({
       headless: true,
-      args: ['--no-sandbox', '--disable-setuid-sandbox'],
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-gpu',
+        '--disable-software-rasterizer',
+      ],
+      timeout: 60000,
     })
 
     const page = await browser.newPage()
-    await page.setContent(htmlContent, { waitUntil: 'networkidle0' })
+    await page.setContent(htmlContent, { 
+      waitUntil: 'domcontentloaded',
+      timeout: 30000,
+    })
 
     const pdf = await page.pdf({
       format: 'A4',
@@ -43,12 +53,13 @@ export async function POST(request: NextRequest) {
           <span class="pageNumber"></span>
         </div>
       `,
+      timeout: 60000,
     })
 
     await browser.close()
 
     // Retornar PDF
-    return new NextResponse(pdf, {
+    return new NextResponse(new Uint8Array(pdf), {
       headers: {
         'Content-Type': 'application/pdf',
         'Content-Disposition': 'attachment; filename="contrato-franquia.pdf"',

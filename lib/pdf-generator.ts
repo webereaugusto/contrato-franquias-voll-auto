@@ -1,7 +1,7 @@
 import { ContractData } from './contract-data'
 import { franqueadorData } from '@/config/franqueador'
 import { format } from 'date-fns'
-import { ptBR } from 'date-fns/locale/pt-BR'
+import ptBR from 'date-fns/locale/pt-BR'
 
 /**
  * Converte número para extenso em português
@@ -153,7 +153,7 @@ export function fillContractTemplate(data: ContractData): string {
     body {
       font-family: 'Times New Roman', Times, serif;
       font-size: 12pt;
-      line-height: 1.5;
+      line-height: 1.35;
       color: #000;
       background: #fff;
     }
@@ -174,7 +174,7 @@ export function fillContractTemplate(data: ContractData): string {
       font-size: 14pt;
       font-weight: bold;
       text-transform: uppercase;
-      line-height: 1.8;
+      line-height: 1.6;
     }
     
     /* CONTEÚDO */
@@ -187,13 +187,13 @@ export function fillContractTemplate(data: ContractData): string {
       font-weight: bold;
       text-transform: uppercase;
       margin-bottom: 20px;
-      line-height: 1.6;
+      line-height: 1.45;
     }
     p {
       text-align: justify;
       text-indent: 0;
-      margin-bottom: 12px;
-      line-height: 1.5;
+      margin-bottom: 10px;
+      line-height: 1.35;
     }
     p.indent {
       text-indent: 1.25cm;
@@ -215,12 +215,16 @@ export function fillContractTemplate(data: ContractData): string {
       margin-bottom: 10px;
     }
     .sub-clause {
-      margin-left: 0.5cm;
+      margin-left: 1.2cm;
       margin-bottom: 8px;
+      text-indent: -0.8cm;
+      padding-left: 0.8cm;
     }
     .sub-clause-item {
-      margin-left: 1cm;
+      margin-left: 1.8cm;
       margin-bottom: 6px;
+      text-indent: -0.6cm;
+      padding-left: 0.6cm;
     }
     .roman-list {
       margin-left: 1cm;
@@ -264,6 +268,7 @@ export function fillContractTemplate(data: ContractData): string {
       border: 1px solid #000;
       padding: 10px 15px;
       margin: 15px 0;
+      text-align: center;
     }
     .value-box-orange {
       border: 2px solid #e67e00;
@@ -469,7 +474,7 @@ Assim, cientes e sabedoras de suas responsabilidades e direitos, as partes resol
 <p class="sub-clause">11.1. Deverá ser pago o valor de KIT de equipamentos e serviços:</p>
 
 <div class="value-box">
-  <p><strong>R$${formatCurrency(investment.valorTotalKit)}</strong> (${numberToWords(Math.floor(investment.valorTotalKit))} reais)</p>
+  <p style="text-align: center; margin: 0;"><strong>R$${formatCurrency(investment.valorTotalKit)}</strong> (${numberToWords(Math.floor(investment.valorTotalKit))} reais)</p>
 </div>
 
 <p style="text-align: center; margin: 20px 0;">Que será pago conforme a seguir:</p>
@@ -482,7 +487,7 @@ Assim, cientes e sabedoras de suas responsabilidades e direitos, as partes resol
 
 <div class="value-box-orange">
   <p class="value-box-title">VALORES PAGOS DIRETAMENTE PARA A FRANQUEADORA:</p>
-  <p><u>R$ R$${formatCurrency(investment.valorTotalFranqueadora)}</u> (${numberToWords(Math.floor(investment.valorTotalFranqueadora))} reais) a serem pagos da seguinte forma:</p>
+  <p><u>R$${formatCurrency(investment.valorTotalFranqueadora)}</u> (${numberToWords(Math.floor(investment.valorTotalFranqueadora))} reais) a serem pagos da seguinte forma:</p>
   <p>Entrada via pix no valor de R$${formatCurrency(investment.valorEntradaFranqueadora)} (${numberToWords(Math.floor(investment.valorEntradaFranqueadora))} reais) até o dia ${formatDate(investment.dataLimiteEntradaFranqueadora)} + ${investment.qtdParcelasFranqueadora}x no boleto no valor de R$${formatCurrency(investment.valorParcelaFranqueadora)} (${numberToWords(Math.floor(investment.valorParcelaFranqueadora))} reais) com vencimento para todo dia 30 <strong class="text-orange">para a franqueadora.</strong></p>
 </div>
 
